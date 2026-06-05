@@ -84,19 +84,12 @@ def home():
 
     if request.method == "POST":
 
-        stock = request.form["stock"].upper()
+        stock = request.form["stock"].upper().strip()
 
-        # Indian stocks shortcut
-        indian_stocks = [
-            "IRB",
-            "TCS",
-            "INFY",
-            "SBIN",
-            "RELIANCE"
-        ]
+        if not stock.endswith(".NS"):
+            stock += ".NS"
 
-        if stock in indian_stocks:
-            stock = stock + ".NS"
+        
 
         # News
         feed = feedparser.parse(
