@@ -60,7 +60,7 @@ def register():
                 (username, password)
             )
             conn.commit()
-            return "Registration Successful!"
+            return redirect("/login")
 
         except:
             return "Username already exists!"
